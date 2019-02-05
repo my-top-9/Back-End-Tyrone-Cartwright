@@ -61,7 +61,7 @@ router.post("/login", protected, (req, res) => {
     .catch(err => res.json(err));
 });
 
-router.get("/api/logout", (req, res) => {
+router.get("/logout", (req, res) => {
   if (req.session) {
     req.session.destroy(err => {
       if (err) {
@@ -73,7 +73,7 @@ router.get("/api/logout", (req, res) => {
   }
 });
 
-router.put("/api/update/:id", protected, (req, res) => {
+router.put("/update/:id", protected, (req, res) => {
   const { id } = req.params;
   let { username, password } = req.body;
   const hashedPassword = bcrypt.hashSync(password, 14);
