@@ -7,6 +7,7 @@ const bcrypt = require("bcryptjs");
 function protected(req, res, next) {
   // console.log(req.session);
   if (req.session && req.session.username) {
+    console.log("SESSION", req.session);
     next();
   } else {
     res.status(401).json("Unauthorized user");
@@ -14,7 +15,6 @@ function protected(req, res, next) {
 }
 
 router.get("/users", (req, res) => {
-  console.log("TYPEOF USERDB####", typeof userDb);
   userDb
     .getAllUsers()
     .then(users => {
@@ -41,7 +41,7 @@ router.post("/register", (req, res) => {
     .catch(err => res.json(err));
 });
 
-router.post("/login", protected, (req, res) => {
+router.post("/login", (req, res) => {
   // Grab the username and password from body
   const creds = req.body;
   console.log(creds);
