@@ -23,7 +23,7 @@ router.get("/users", (req, res) => {
     .catch(err => res.send(err));
 });
 
-router.post("/register", protected, (req, res) => {
+router.post("/register", (req, res) => {
   //Grab the username and password from the body
   const creds = req.body;
   // generate the hash from the users password
@@ -41,7 +41,7 @@ router.post("/register", protected, (req, res) => {
     .catch(err => res.json(err));
 });
 
-router.post("/login", (req, res) => {
+router.post("/login", protected, (req, res) => {
   // Grab the username and password from body
   const creds = req.body;
   console.log(creds);
@@ -61,7 +61,7 @@ router.post("/login", (req, res) => {
     .catch(err => res.json(err));
 });
 
-router.get("/logout", (req, res) => {
+router.get("/api/logout", (req, res) => {
   if (req.session) {
     req.session.destroy(err => {
       if (err) {
@@ -73,7 +73,7 @@ router.get("/logout", (req, res) => {
   }
 });
 
-router.put("/update/:id", protected, (req, res) => {
+router.put("/api/update/:id", protected, (req, res) => {
   const { id } = req.params;
   let { username, password } = req.body;
   const hashedPassword = bcrypt.hashSync(password, 14);
