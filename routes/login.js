@@ -41,7 +41,7 @@ router.post("/api/register", (req, res) => {
     .catch(err => res.json(err));
 });
 
-router.post("/api/login", (req, res) => {
+router.post("/login", protected, (req, res) => {
   // Grab the username and password from body
   const creds = req.body;
   console.log(creds);
