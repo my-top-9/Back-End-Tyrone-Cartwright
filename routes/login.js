@@ -23,7 +23,7 @@ router.get("/users", (req, res) => {
     .catch(err => res.send(err));
 });
 
-router.post("/register", (req, res) => {
+router.post("/register", protected, (req, res) => {
   //Grab the username and password from the body
   const creds = req.body;
   // generate the hash from the users password
