@@ -5,13 +5,25 @@ const bcrypt = require("bcryptjs");
 
 // Protected MWare
 function protected(req, res, next) {
-  // console.log(req.session);
   if (req.session && req.session.username) {
     console.log("SESSION", req.session);
     next();
   } else {
     res.status(401).json("Unauthorized user");
   }
+}
+
+function checkIfUserNameExists(req, res, next) {
+  console.log(req.body.username);
+  userDb.getAllUsers()
+    .then(users => {
+      users.forEach(user => {
+        if(user.username === req.body.username) {
+          res.status(404).json({message: "User already exist."});
+        }
+      });
+    });
+  next();
 }
 
 router.get("/users", (req, res) => {
@@ -23,7 +35,7 @@ router.get("/users", (req, res) => {
     .catch(err => res.send(err));
 });
 
-router.post("/register", (req, res) => {
+router.post("/register", checkIfUserNameExists, (req, res) => {
   //Grab the username and password from the body
   const creds = req.body;
   // generate the hash from the users password
@@ -31,6 +43,7 @@ router.post("/register", (req, res) => {
   // override the user password with the hash
   creds.password = hash;
   // save the user to the userDb
+  
   userDb
     .registerUser(creds)
     .then(ids => {
