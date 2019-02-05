@@ -5,11 +5,15 @@ exports.up = function(knex, Promise) {
     users
       .string("username", 128)
       .notNullable()
-      .unique();
+      .unique()
+      .unsigned()
+      .references("category");
 
     users.string("password", 128).notNullable();
 
-    users.json("rank");
+    users.integer("rank1").unsigned();
+    users.integer("rank2").unsigned();
+    users.integer("rank3").unsigned();
   });
 };
 
