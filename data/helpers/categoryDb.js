@@ -27,9 +27,8 @@ function getCategoryByUserId(id) {
   return db("category").where({ userId: id });
 }
 
-function addCategory(category, user) {
-  const newCategory = { ...category, userId: id };
-  return db("category").insert(newCategory);
+function addCategory(category) {
+  return db("category").insert(category);
 }
 
 function updateCategory(id, category) {
