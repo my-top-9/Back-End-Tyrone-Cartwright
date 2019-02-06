@@ -2,7 +2,8 @@
 
 Backend architect for My_Top_Nine Project
 
-1. `yarn install`
-2. to migrate: `knex migrate:latest`
-   2.5 to seed: `knex seed:run`
-3. to start server run `yarn server`
+1. `yarn global add knex`
+2. `yarn install`
+3. `knex migrate:latest`
+4. `knex seed:run`
+5. `yarn server`
