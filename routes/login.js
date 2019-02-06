@@ -3,7 +3,6 @@ const router = express.Router();
 const userDb = require("../data/helpers/userDb.js");
 const bcrypt = require("bcryptjs");
 const db = require("../data/dbConfig.js");
-//const protected  = require('../config/protectedMWare.js')
 
 function checkIfUserNameExists(req, res, next) {
   console.log(req.body.username);
