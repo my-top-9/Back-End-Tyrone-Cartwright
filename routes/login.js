@@ -10,7 +10,7 @@ function checkIfUserNameExists(req, res, next) {
     .then(users => {
       users.forEach(user => {
         if(user.username === req.body.username) {
-          res.status(404).json({message: "User already exist."});
+          return res.status(404).json({message: "User already exist."});
         }
       });
     });
