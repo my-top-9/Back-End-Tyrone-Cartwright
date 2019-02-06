@@ -13,21 +13,40 @@ exports.seed = function(knex, Promise) {
           password: password,
           rank1: "1",
           rank2: "3",
-          rank3: "2"
+          rank3: "2",
+          rank4: "4",
+          rank5: "5",
+          rank6: "6",
+          rank7: "7",
+          rank8: "8",
+          rank9: "9"
         },
         {
           username: "carolSASS",
           password: password,
           rank1: "3",
           rank2: "1",
-          rank3: "2"
+          rank3: "2",
+          rank4: "4",
+          rank5: "5",
+          rank6: "6",
+          rank7: "7",
+          rank8: "8",
+          rank9: "9"
+          
         },
         {
           username: "jimSASS",
           password: password,
           rank1: "20",
           rank2: "6",
-          rank3: "2"
+          rank3: "2",
+          rank4: "4",
+          rank5: "5",
+          rank6: "6",
+          rank7: "7",
+          rank8: "8",
+          rank9: "9"
         },
         {
           username: "bobSASS",
@@ -41,7 +60,13 @@ exports.seed = function(knex, Promise) {
           password: password,
           rank1: "3",
           rank2: "1",
-          rank3: "2"
+          rank3: "2",
+          rank4: "4",
+          rank5: "5",
+          rank6: "6",
+          rank7: "7",
+          rank8: "8",
+          rank9: "9"
         },
         {
           username: "joelSASS",
@@ -55,35 +80,65 @@ exports.seed = function(knex, Promise) {
           password: password,
           rank1: "5",
           rank2: "1",
-          rank3: "2"
+          rank3: "2",
+          rank4: "4",
+          rank5: "5",
+          rank6: "6",
+          rank7: "7",
+          rank8: "8",
+          rank9: "9"
         },
         {
           username: "austinSASS",
           password: password,
           rank1: "3",
           rank2: "1",
-          rank3: "2"
+          rank3: "2",
+          rank4: "4",
+          rank5: "5",
+          rank6: "6",
+          rank7: "7",
+          rank8: "8",
+          rank9: "9"
         },
         {
           username: "karenSASS",
           password: password,
           rank1: "3",
           rank2: "1",
-          rank3: "2"
+          rank3: "2",
+          rank4: "4",
+          rank5: "5",
+          rank6: "6",
+          rank7: "7",
+          rank8: "8",
+          rank9: "9"
         },
         {
           username: "keithSASS",
           password: password,
           rank1: "3",
           rank2: "1",
-          rank3: "2"
+          rank3: "2",
+          rank4: "4",
+          rank5: "5",
+          rank6: "6",
+          rank7: "7",
+          rank8: "8",
+          rank9: "9"
         },
         {
           username: "rogerREACT",
           password: password,
           rank1: "2",
           rank2: "1",
-          rank3: "3"
+          rank3: "3",
+          rank4: "4",
+          rank5: "5",
+          rank6: "6",
+          rank7: "7",
+          rank8: "8",
+          rank9: "9"
         }
       ]);
     });
