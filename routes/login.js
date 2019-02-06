@@ -2,16 +2,7 @@ const express = require("express");
 const router = express.Router();
 const userDb = require("../data/helpers/userDb.js");
 const bcrypt = require("bcryptjs");
-
-// Protected MWare
-function protected(req, res, next) {
-  if (req.session && req.session.username) {
-    console.log("SESSION", req.session);
-    next();
-  } else {
-    res.status(401).json("Unauthorized user");
-  }
-}
+const db = require("../data/dbConfig.js");
 
 function checkIfUserNameExists(req, res, next) {
   console.log(req.body.username);
@@ -33,6 +24,17 @@ router.get("/users", (req, res) => {
       res.json(users);
     })
     .catch(err => res.send(err));
+});
+
+router.get('/users/:id', (req, res) => {
+  db.raw(`SELECT DISTINCT * FROM users INNER JOIN category ON users.id = ${req.params.id} WHERE users.rank1 = category.id`).then(rank1 => {
+    db.raw(`SELECT DISTINCT * FROM users INNER JOIN category ON users.id = ${req.params.id} WHERE users.rank2 = category.id`).then(rank2 => {
+      db.raw(`SELECT DISTINCT * FROM users INNER JOIN category ON users.id = ${req.params.id} WHERE users.rank2 = category.id`).then(rank3 => {
+        console.log(`${rank1[0]} --> ${rank2[0]} --> ${rank3[0]}`)
+        res.status(200).json({rank1: rank1[0], rank2: rank2[0], rank3: rank3[0]});
+      }).catch(err => res.status(500).json(err))
+    }).catch(err => res.status(500).json(err))
+  }).catch(err => res.status(500).json(err))
 });
 
 router.post("/register", checkIfUserNameExists, (req, res) => {
@@ -122,3 +124,13 @@ router.delete("/delete/:id", (req, res) => {
 });
 
 module.exports = router;
+
+// Protected MWare
+function protected(req, res, next) {
+  if (req.session && req.session.username) {
+    console.log("SESSION", req.session);
+    next();
+  } else {
+    res.status(401).json("Unauthorized user");
+  }
+}
