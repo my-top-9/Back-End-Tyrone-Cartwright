@@ -42,7 +42,7 @@ router.get('/users/:id', (req, res) => {
                     db('users')
                       .then(users => {
                         currentUser = users.filter(user => user.id == userId)[0];
-                        res.status(200).json([{id: currentUser.id}, {username: currentUser.username}, rank1[0], rank2[0], rank3[0], rank4[0], rank5[0], rank6[0], rank7[0], rank8[0], rank9[0]])
+                        res.status(200).json([rank1[0], rank2[0], rank3[0], rank4[0], rank5[0], rank6[0], rank7[0], rank8[0], rank9[0], {username: currentUser.username}, {id: currentUser}])
                       })
                   }).catch(err => res.status(500).json(err))
                 }).catch(err => res.status(500).json(err))
@@ -54,6 +54,20 @@ router.get('/users/:id', (req, res) => {
     }).catch(err => res.status(500).json(err))
   }).catch(err => res.status(500).json(err));
 });
+
+router.put('/updateRank/:userId', (req, res) => {
+  const userId = req.params.userId;
+  const {rankInTop9, newCategoryId} = req.body;
+  db.raw(`SELECT users.username, users.id, category.img, category.name, category.description FROM users INNER JOIN category ON users.id = ${userId} WHERE users.rank${rankInTop9} = category.id`).then(userCategory => {
+    currentUserInfo = userCategory[0];
+    db('users')
+      .where({id: userId})
+      .update({[`rank${rankInTop9}`]: newCategoryId})
+      .then(updatedRank => {
+        res.status(200).json(updatedRank);
+      }).catch(err => res.status(500).json(err));
+  })
+})
 
 router.post("/register", checkIfUserNameExists, (req, res) => {
   //Grab the username and password from the body
