@@ -10,7 +10,7 @@ module.exports = {
 };
 
 function deleteCategory(id) {
-  return db("users")
+  return db("category")
     .where({ id })
     .del();
 }

@@ -56,4 +56,20 @@ router.get("/category/:id", (req, res) => {
     });
 });
 
+router.delete("/categories/:id", (req, res) => {
+  const id = req.params.id;
+  categoryDb
+    .deleteCategory(id)
+    .then(count => {
+      if (count === 1) {
+        res.status(200).json(count);
+      } else {
+        res.status(404).json({ message: "Category not found, try again." });
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ message: "Could not delete category", err });
+    });
+});
+
 module.exports = router;
