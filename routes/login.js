@@ -86,7 +86,7 @@ router.get("/logout", (req, res) => {
   }
 });
 
-router.put("/update/:id", protected, (req, res) => {
+router.put("/update/:id", (req, res) => {
   const { id } = req.params;
   let { username, password } = req.body;
   const hashedPassword = bcrypt.hashSync(password, 14);
@@ -103,7 +103,7 @@ router.put("/update/:id", protected, (req, res) => {
     });
 });
 
-router.delete("/delete/:id", protected, (req, res) => {
+router.delete("/delete/:id", (req, res) => {
   const userId = req.params.id;
   console.log(userId);
   userDb
