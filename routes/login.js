@@ -28,7 +28,9 @@ router.get("/users", (req, res) => {
 
 
 router.get('/users/:id', (req, res) => {
-  db.raw(`SELECT DISTINCT category.img, category.name, category.description FROM users INNER JOIN category ON users.id = ${req.params.id} WHERE users.rank1 = category.id`).then(rank1 => {
+  const userId = req.params.id;
+  console.log("USERID", userId);
+  db.raw(`SELECT category.img, category.name, category.description FROM users INNER JOIN category ON users.id = ${req.params.id} WHERE users.rank1 = category.id`).then(rank1 => {
     db.raw(`SELECT DISTINCT category.img, category.name, category.description FROM users INNER JOIN category ON users.id = ${req.params.id} WHERE users.rank2 = category.id`).then(rank2 => {
       db.raw(`SELECT DISTINCT category.img, category.name, category.description FROM users INNER JOIN category ON users.id = ${req.params.id} WHERE users.rank3 = category.id`).then(rank3 => {
         db.raw(`SELECT DISTINCT category.img, category.name, category.description FROM users INNER JOIN category ON users.id = ${req.params.id} WHERE users.rank4 = category.id`).then(rank4 => {
@@ -37,7 +39,11 @@ router.get('/users/:id', (req, res) => {
               db.raw(`SELECT DISTINCT category.img, category.name, category.description FROM users INNER JOIN category ON users.id = ${req.params.id} WHERE users.rank7 = category.id`).then(rank7 => {
                 db.raw(`SELECT DISTINCT category.img, category.name, category.description FROM users INNER JOIN category ON users.id = ${req.params.id} WHERE users.rank8 = category.id`).then(rank8 => {
                   db.raw(`SELECT DISTINCT category.img, category.name, category.description FROM users INNER JOIN category ON users.id = ${req.params.id} WHERE users.rank9 = category.id`).then(rank9 => {
-                    res.status(200).json({rank1: rank1[0], rank2: rank2[0], rank3: rank3[0], rank4: rank4[0], rank5: rank5[0], rank6: rank6[0], rank7: rank7[0], rank8: rank8[0], rank9: rank9[0]})
+                    db('users')
+                      .then(users => {
+                        currentUser = users.filter(user => user.id == userId)[0];
+                        res.status(200).json([{id: currentUser.id}, {username: currentUser.username}, rank1[0], rank2[0], rank3[0], rank4[0], rank5[0], rank6[0], rank7[0], rank8[0], rank9[0]])
+                      })
                   }).catch(err => res.status(500).json(err))
                 }).catch(err => res.status(500).json(err))
               }).catch(err => res.status(500).json(err))
