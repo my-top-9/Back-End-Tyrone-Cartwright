@@ -76,11 +76,10 @@ router.post("/login", (req, res) => {
   userDb
     .loginUser(creds)
     .then(user => {
-      console.log(user);
       if (user && bcrypt.compareSync(creds.password, user.password)) {
         req.session.username = user.username;
         // passwords match and the user exists by the username
-        res.status(200).json({ message: "Thank you for signing in!" });
+        res.status(200).json({ message: "Thank you for signing in!", user: user });
       } else {
         // either username or password is invalid
         res.status(401).json({ message: "Please enter valid information!" });
