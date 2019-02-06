@@ -63,7 +63,7 @@ router.post("/register", checkIfUserNameExists, (req, res) => {
     .then(ids => {
       const id = ids[0];
       req.session.username = creds.username;
-      res.status(201).json({ newUserId: id });
+      res.status(201).json({ newUserId: id, username: req.session.username, rank1: null, rank2: null, rank3: null, rank4: null, rank5: null, rank6: null, rank7: null, rank8: null, rank9: null });
     })
     .catch(err => res.json(err));
 });
@@ -76,6 +76,7 @@ router.post("/login", (req, res) => {
     .loginUser(creds)
     .then(user => {
       if (user && bcrypt.compareSync(creds.password, user.password)) {
+        delete user.password;
         req.session.username = user.username;
         // passwords match and the user exists by the username
         res.status(200).json({ message: "Thank you for signing in!", user: user });

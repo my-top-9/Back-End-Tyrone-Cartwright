@@ -6,8 +6,6 @@ exports.up = function(knex, Promise) {
       .string("username", 128)
       .notNullable()
       .unique()
-      .unsigned()
-      .references("category");
 
     users.string("password", 128).notNullable();
 
