@@ -27,14 +27,26 @@ router.get("/users", (req, res) => {
 });
 
 router.get('/users/:id', (req, res) => {
-  db.raw(`SELECT DISTINCT * FROM users INNER JOIN category ON users.id = ${req.params.id} WHERE users.rank1 = category.id`).then(rank1 => {
-    db.raw(`SELECT DISTINCT * FROM users INNER JOIN category ON users.id = ${req.params.id} WHERE users.rank2 = category.id`).then(rank2 => {
-      db.raw(`SELECT DISTINCT * FROM users INNER JOIN category ON users.id = ${req.params.id} WHERE users.rank2 = category.id`).then(rank3 => {
-        console.log(`${rank1[0]} --> ${rank2[0]} --> ${rank3[0]}`)
-        res.status(200).json({rank1: rank1[0], rank2: rank2[0], rank3: rank3[0]});
+  const query = `SELECT DISTINCT category.img, category.name, category.description FROM users INNER JOIN category ON users.id = ${req.params.id} WHERE users.rank1 = category.id`;
+  db.raw(query).then(rank1 => {
+    db.raw(query).then(rank2 => {
+      db.raw(query).then(rank3 => {
+        db.raw(query).then(rank4 => {
+          db.raw(query).then(rank5 => {
+            db.raw(query).then(rank6 => {
+              db.raw(query).then(rank7 => {
+                db.raw(query).then(rank8 => {
+                  db.raw(query).then(rank9 => {
+                    res.status(200).json({rank1: rank1[0], rank2: rank2[0], rank3: rank3[0], rank4: rank4[0], rank5: rank5[0], rank6: rank6[0], rank7: rank7[0], rank8: rank8[0], rank9: rank9[0]})
+                  }).catch(err => res.status(500).json(err))
+                }).catch(err => res.status(500).json(err))
+              }).catch(err => res.status(500).json(err))
+            }).catch(err => res.status(500).json(err))
+          }).catch(err => res.status(500).json(err))
+        }).catch(err => res.status(500).json(err))
       }).catch(err => res.status(500).json(err))
     }).catch(err => res.status(500).json(err))
-  }).catch(err => res.status(500).json(err))
+  }).catch(err => res.status(500).json(err));
 });
 
 router.post("/register", checkIfUserNameExists, (req, res) => {
