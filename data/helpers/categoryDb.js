@@ -16,7 +16,7 @@ function deleteCategory(id) {
 }
 
 function getAllCategory() {
-  return db("category").select("name");
+  return db("category").select("*");
 }
 
 function getCategoryById(id) {

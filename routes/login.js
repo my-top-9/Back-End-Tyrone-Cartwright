@@ -26,6 +26,7 @@ router.get("/users", (req, res) => {
     .catch(err => res.send(err));
 });
 
+
 router.get('/users/:id', (req, res) => {
   const query = `SELECT DISTINCT category.img, category.name, category.description FROM users INNER JOIN category ON users.id = ${req.params.id} WHERE users.rank1 = category.id`;
   db.raw(query).then(rank1 => {
