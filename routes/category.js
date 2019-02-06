@@ -38,24 +38,6 @@ router.post("/categories", (req, res) => {
     .catch(err => res.status(500).json(err));
 });
 
-router.get("/category/:id", (req, res) => {
-  const { id } = req.params.id;
-  categoryDb
-    .getCategoryById()
-    .then(category => {
-      if (category) {
-        res.status(200).json(category);
-      } else {
-        res.status(404).json({
-          message: `Category not found with the specified ${id} given, try again.`
-        });
-      }
-    })
-    .catch(err => {
-      res.status(500).json({ err });
-    });
-});
-
 router.delete("/categories/:id", (req, res) => {
   const id = req.params.id;
   categoryDb
