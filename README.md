@@ -47,7 +47,7 @@
 ..\* `password: java` then submit
 --- This will update user with a ID of 1 to kevinSmith with a password of java
 
-### DELETE
+### DELETE endpoint
 
 --- To delete a user, use endpoint `localhost:5000/api/delete/id`
 .._ Select a specified user by ID
@@ -57,7 +57,7 @@
 
 ## CATEGORY ENDPOINTS
 
-### GET
+### GET endpoint
 
 --- To get all categories type in `localhost:5000/api/categories`
 ..\* This will give you all the category information
@@ -69,7 +69,7 @@
 ..\* `localhost:5000/api/categories/2`
 ..\* This will return `id, img, name of category: celebrities, description`
 
-### POST
+### POST endpoint
 
 --- To add a new category use endpoint
 .._ `localhost:5000/api/categories`
@@ -77,7 +77,7 @@
 .._ Once request is sent should receive a `1`
 .._ Then check `localhost:5000/api/categories` to make sure your category was added
 
-### PUT
+### PUT endpoint
 
 --- To update an category use endpoint
 .._ `localhost:5000/api/categories/id`
@@ -87,7 +87,7 @@
 ..\* `img: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0Zy21Fa9jms1CxV1JSneA2-4mRv2SqTRQqYgWt6h_4tKXacgp-w, name: sallySmith, description: Travel`
 ..\* This will update category at rank 2
 
-### DELETE
+### DELETE endpoint
 
 --- To delete a user, use endpoint `localhost:5000/api/categories/id`
 .._ Select a specified category by ID
