@@ -42,7 +42,7 @@ router.get('/users/:id', (req, res) => {
                     db('users')
                       .then(users => {
                         currentUser = users.filter(user => user.id == userId)[0];
-                        res.status(200).json([rank1[0], rank2[0], rank3[0], rank4[0], rank5[0], rank6[0], rank7[0], rank8[0], rank9[0], {id: currentUser.id}, {username: currentUser.username}])
+                        res.status(200).json([rank1[0], rank2[0], rank3[0], rank4[0], rank5[0], rank6[0], rank7[0], rank8[0], rank9[0]])
                       })
                   }).catch(err => res.status(500).json(err))
                 }).catch(err => res.status(500).json(err))
