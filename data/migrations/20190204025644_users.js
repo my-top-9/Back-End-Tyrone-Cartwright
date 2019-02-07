@@ -9,15 +9,15 @@ exports.up = function(knex, Promise) {
 
     users.string("password", 128).notNullable();
 
-    users.integer("rank1").unsigned();
-    users.integer("rank2").unsigned();
-    users.integer("rank3").unsigned();
-    users.integer("rank4").unsigned();
-    users.integer("rank5").unsigned();
-    users.integer("rank6").unsigned();
-    users.integer("rank7").unsigned();
-    users.integer("rank8").unsigned();
-    users.integer("rank9").unsigned();
+    users.integer("rank1").unsigned().defaultTo(1);
+    users.integer("rank2").unsigned().defaultTo(1);
+    users.integer("rank3").unsigned().defaultTo(1);
+    users.integer("rank4").unsigned().defaultTo(1);
+    users.integer("rank5").unsigned().defaultTo(1);
+    users.integer("rank6").unsigned().defaultTo(1);
+    users.integer("rank7").unsigned().defaultTo(1);
+    users.integer("rank8").unsigned().defaultTo(1);
+    users.integer("rank9").unsigned().defaultTo(1);
   });
 };
 

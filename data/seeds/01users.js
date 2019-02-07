@@ -38,7 +38,7 @@ exports.seed = function(knex, Promise) {
         {
           username: "jimSASS",
           password: password,
-          rank1: "20",
+          rank1: "3",
           rank2: "6",
           rank3: "2",
           rank4: "4",
@@ -52,8 +52,14 @@ exports.seed = function(knex, Promise) {
           username: "bobSASS",
           password: password,
           rank1: "3",
-          rank2: "1",
-          rank3: "2"
+          rank2: "6",
+          rank3: "2",
+          rank4: "4",
+          rank5: "5",
+          rank6: "6",
+          rank7: "7",
+          rank8: "8",
+          rank9: "9"
         },
         {
           username: "samSASS",
@@ -71,9 +77,15 @@ exports.seed = function(knex, Promise) {
         {
           username: "joelSASS",
           password: password,
-          rank1: "4",
-          rank2: "1",
-          rank3: "2"
+          rank1: "3",
+          rank2: "6",
+          rank3: "2",
+          rank4: "4",
+          rank5: "5",
+          rank6: "6",
+          rank7: "7",
+          rank8: "8",
+          rank9: "9"
         },
         {
           username: "lucasSASS",
