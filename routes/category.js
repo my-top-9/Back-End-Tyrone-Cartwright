@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const categoryDb = require("../data/helpers/categoryDb.js");
+const isImageUrl = require("is-image-url");
 
 router.get("/categories", (req, res) => {
   categoryDb
@@ -34,7 +35,14 @@ router.post("/categories", (req, res) => {
   const newCategory = { name, description, img };
   categoryDb
     .addCategory(newCategory)
-    .then(categoryId => res.status(201).json({ categoryId, newCategory }))
+    .then(categoryId => {
+      if (!isImageUrl(img)) {
+        return res
+          .status(400)
+          .json({ message: "This is not an image, try again" });
+      }
+      res.status(201).json({ categoryId, newCategory });
+    })
     .catch(err => res.status(500).json(err));
 });
 
