@@ -3,13 +3,13 @@ exports.up = function(knex, Promise) {
     users.increments();
 
     users
-      .string("username", 128)
+      .string("username", 25)
       .notNullable()
       .unique()
 
-    users.string("password", 128).notNullable();
+    users.string("password", 255).notNullable();
 
-    users.integer("rank1").unsigned().defaultTo(1);
+    users.integer("rank1").unsigned().defaultTo(1); // everyone loves beer!
     users.integer("rank2").unsigned().defaultTo(1);
     users.integer("rank3").unsigned().defaultTo(1);
     users.integer("rank4").unsigned().defaultTo(1);

@@ -1,18 +1,19 @@
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable("category", cat => {
-    cat.increments();
+    return knex.schema.createTable("category", cat => {
+        cat.increments();
 
-    cat.string("img", 255).notNullable();
-
-    cat
-      .string("name", 128)
-      .notNullable()
-      .unique();
-
-    cat.text("description").notNullable();
-  });
+        cat.string("name", 210)
+            .notNullable()
+            .unique();
+        cat.text("description")
+            .notNullable()
+            .unique();
+        cat.string("img", 25)
+            .notNullable()
+            .unique();
+    });
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists("category");
+    return knex.schema.dropTableIfExists("category");
 };
