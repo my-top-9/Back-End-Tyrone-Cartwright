@@ -7,7 +7,6 @@ exports.up = function(knex, Promise) {
             .unique();
         cat.text("description")
             .notNullable()
-            .unique();
         cat.string("img", 25)
             .notNullable()
             .unique();

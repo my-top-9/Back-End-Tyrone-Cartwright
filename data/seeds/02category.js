@@ -34,7 +34,7 @@ exports.seed = function(knex, Promise) {
                 {
                     name: "soccer",
                     description: "sport played on a field with nets",
-                    img: "http://www.stltrainingground.com/wp-content/uploads/2017/01/retractable-for-soccer-300x300.jpg"
+                    img: "./soccer.jpg"
                 },
                 {
                     name: "star wars",
