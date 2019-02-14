@@ -1,3 +1,17 @@
+# Team Members
+1. Scrum Master - Brian Ruff
+2. Backend Dev - Tyrone Cartwright
+3. React App - Josuha Disney
+4. React App - Chelsea Tolnai
+5. UI Dev - Thomas Hessburg
+6. UI Dev - Terrell Tullis
+7. UI Dev - Victor Goico
+
+# Links
+1. Landing Page - https://angry-cray-eb6e34.netlify.com/
+2. React App Page - https://mytop9.herokuapp.com/login
+3. Backend NodeJS - https://my-top-9.herokuapp.com/api/users
+
 # team_my_top_nine_backend
 
 1. `yarn global add knex`
