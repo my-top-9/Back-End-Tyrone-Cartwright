@@ -34,7 +34,7 @@ exports.seed = function(knex, Promise) {
                 {
                     name: "soccer",
                     description: "sport played on a field with nets",
-                    img: "./soccer.jpg"
+                    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/1alessandromartinelli2015.jpg/300px-1alessandromartinelli2015.jpg"
                 },
                 {
                     name: "star wars",
